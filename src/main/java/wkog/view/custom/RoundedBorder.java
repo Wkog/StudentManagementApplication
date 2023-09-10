@@ -1,4 +1,4 @@
-package wkog.view.paint;
+package wkog.view.custom;
 
 import javax.swing.border.Border;
 import java.awt.*;

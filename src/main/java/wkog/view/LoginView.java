@@ -3,7 +3,7 @@ package wkog.view;
 import wkog.entities.UserAccount;
 import wkog.font.FontService;
 import wkog.model.UserAccountDAO;
-import wkog.view.paint.RoundedBorder;
+import wkog.view.custom.RoundedBorder;
 
 import javax.swing.*;
 import javax.swing.border.Border;
