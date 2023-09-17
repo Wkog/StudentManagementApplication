@@ -1,8 +1,8 @@
 package wkog.view;
 
-import wkog.entities.UserAccount;
+import wkog.model.UserAccount;
 import wkog.font.FontService;
-import wkog.model.UserAccountDAO;
+import wkog.controller.UserAccountController;
 import wkog.view.custom.RoundedBorder;
 
 import javax.swing.*;
@@ -16,7 +16,7 @@ public class LoginView implements ActionListener {
     private static final int SCREEN_WIDTH_LOGINVIEW = 1100;
     private static final int SCREEN_HEIGHT_LOGINVIEW = 739;
     private static final FontService fontService = new FontService();
-    private static final UserAccountDAO userAccountDAO = new UserAccountDAO();
+    private static final UserAccountController userAccountController = new UserAccountController();
     private static int numberOfConsecutiveIncorrectLoginAttempts = 0;
     private final JFrame frame;
     private final JTextField usernameInputFormUsernameCenterFormLogin;
@@ -240,7 +240,7 @@ public class LoginView implements ActionListener {
     public void resultLogin(String resultMessenge, UserAccount userAccount) {
         if (resultMessenge.equals("success")) {
             if (checkBoxRememberUser.isSelected()) {
-                userAccountDAO.writeUserToFile(userAccount);
+                userAccountController.writeUserToFile(userAccount);
             }
             frame.setVisible(false);
             switch (userAccount.getLevelAccount()) {
@@ -287,11 +287,11 @@ public class LoginView implements ActionListener {
                 return;
             }
             this.blockSpamLogin();
-            userAccountDAO.clearUserToFile();
+            userAccountController.clearUserToFile();
             String username = usernameInputFormUsernameCenterFormLogin.getText();
             String password = passwordInputFormUsernameCenterFormLogin.getText();
             UserAccount userAccount = new UserAccount(username, password);
-            String result = userAccountDAO.checkUserLogin(userAccount);
+            String result = userAccountController.checkUserLogin(userAccount);
             this.resultLogin(result, userAccount);
         }
         if (e.getSource() == buttonResetPassword) {

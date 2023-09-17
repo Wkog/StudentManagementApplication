@@ -1,4 +1,4 @@
-package wkog.entities;
+package wkog.model;
 
 public class Teacher {
 }

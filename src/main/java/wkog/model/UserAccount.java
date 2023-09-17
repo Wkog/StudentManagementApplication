@@ -1,4 +1,4 @@
-package wkog.entities;
+package wkog.model;
 
 import java.io.Serializable;
 

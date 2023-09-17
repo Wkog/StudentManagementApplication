@@ -1,7 +1,7 @@
-package wkog.model;
+package wkog.controller;
 
 import wkog.database.Connect;
-import wkog.entities.UserAccount;
+import wkog.model.UserAccount;
 
 import java.io.*;
 import java.sql.Connection;
@@ -11,11 +11,10 @@ import java.util.Date;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class UserAccountDAO implements IUserAccountDAO {
+public class UserAccountController {
     private PreparedStatement preparedStatement;
     private Connection connection;
 
-    @Override
     public String checkUserLogin(UserAccount userAccount) {
         connection = Connect.getConnection();
         String selectUserAccount;
@@ -84,7 +83,7 @@ public class UserAccountDAO implements IUserAccountDAO {
             ex.printStackTrace();
         }
 //        259200000
-        if ((new Date().getTime() - getDate.getTime()) < 25925) {
+        if ((new Date().getTime() - getDate.getTime()) < 2) {
             return userAccount;
         } else {
             this.clearUserToFile();
